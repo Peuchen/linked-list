@@ -67,13 +67,14 @@ class LinkedList
     end
   end
 
-  # def to_s
-  #   temp = head
-  #   while temp != nil
-  #     temp = temp.next_node
-  #     puts temp
-  #   end
-  # end
+  def to_s
+    temp = @head
+    while temp != nil
+      print "( #{temp.value} ) -> "
+      temp = temp.next_node
+    end
+    puts "nil"
+  end
 
 end
 
@@ -91,3 +92,5 @@ puts list.size
 puts "Head: #{list.head}"
 puts "Tail: #{list.tail}"
 puts list.at(3)
+
+puts list
