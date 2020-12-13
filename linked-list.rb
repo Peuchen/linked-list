@@ -3,10 +3,10 @@ class Node
 
   @@count = 0
 
-  def initialize
+  def initialize(value)
     @@count += 1
 
-    @value = nil
+    @value = value
     @next_node = nil
   end
 
@@ -24,28 +24,23 @@ class LinkedList
   end
 
   def prepend(value)
+    node = Node.new(value)
     if @head.nil?
-      @head = Node.new
-      @tail = @head
-      @head.value = value
-      @tail.value = value
+      @tail = node
     else
-      @head.next_node = head
-      @head = Node.new
-      @head.value = value
+      node.next_node = @head
     end
+    @head = node
   end
 
   def append(value)
+    node = Node.new(value)
     if @head.nil?
-      @tail = Node.new
-      @head.value = value
-      @tail.value = value
+      @head = node
     else
-      @tail.next_node = tail
-      @tail = Node.new
-      @tail.value = value
+      @tail.next_node = node
     end
+    @tail = node
   end
 
   def size
@@ -60,13 +55,39 @@ class LinkedList
     @tail.value
   end
 
+  def at(index)
+    pos = @head
+    if index < Node.count
+      index.times do
+        pos = pos.next_node
+      end
+      pos.value
+    else
+      "No value is found at the given index"
+    end
+  end
+
+  # def to_s
+  #   temp = head
+  #   while temp != nil
+  #     temp = temp.next_node
+  #     puts temp
+  #   end
+  # end
+
 end
 
 list = LinkedList.new
-puts list
+
 list.prepend("test2")
+
 list.prepend("test1")
+
 list.prepend("test0")
+
+list.append("test4")
+
 puts list.size
-puts list.head
-puts list.tail
+puts "Head: #{list.head}"
+puts "Tail: #{list.tail}"
+puts list.at(3)
