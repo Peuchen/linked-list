@@ -67,6 +67,22 @@ class LinkedList
     end
   end
 
+  def pop
+    if @tail.nil?
+      puts "There is nothing to delete"
+    else
+
+      current_node = @head.next_node
+
+      until current_node == nil || current_node.value.equal?(self.at(size-1))
+        previous_node = current_node
+        current_node = current_node.next_node
+      end
+      previous_node.next_node = current_node.next_node
+      @tail = previous_node
+    end
+  end
+
   def to_s
     temp = @head
     while temp != nil
@@ -86,11 +102,14 @@ list.prepend("test1")
 
 list.prepend("test0")
 
-list.append("test4")
+list.append("test3")
 
 puts list.size
 puts "Head: #{list.head}"
 puts "Tail: #{list.tail}"
 puts list.at(3)
 
+list.pop
+
 puts list
+puts "Tail: #{list.tail}"
