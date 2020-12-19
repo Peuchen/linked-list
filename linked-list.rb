@@ -122,6 +122,14 @@ class LinkedList
     end
   end
 
+  def insert_at(value, index)
+    previous_node = self.at(index-1)
+    new_node = Node.new(value)
+
+    new_node.next_node = previous_node.next_node
+    previous_node.next_node = new_node
+  end
+
 end
 
 list = LinkedList.new
@@ -151,3 +159,6 @@ puts "Tail after pop: #{list.tail}"
 p list.contains?("test2")
 p list.find("test3")
 
+list.insert_at("test2.5", 3)
+
+puts "After insert_at: #{list}"
