@@ -61,9 +61,9 @@ class LinkedList
       index.times do
         pos = pos.next_node
       end
-      pos.value
+      pos
     else
-      "No value is found at the given index"
+      "No node is found at the given index"
     end
   end
 
@@ -74,7 +74,7 @@ class LinkedList
 
       current_node = @head.next_node
 
-      until current_node == nil || current_node.value.equal?(self.at(size-1))
+      until current_node == nil || current_node.value.equal?(self.at(size-1).value)
         previous_node = current_node
         current_node = current_node.next_node
       end
@@ -102,7 +102,7 @@ class LinkedList
       n = 0
       output = false
       while n < (self.size - 1)
-        output = true if self.at(n) == value
+        output = true if self.at(n).value == value
         n += 1
       end
       output
@@ -115,7 +115,7 @@ class LinkedList
     else
       n = 0
       while n < (self.size - 1)
-        return n if self.at(n) == value
+        return n if self.at(n).value == value
         n += 1
       end
       return nil
@@ -134,6 +134,8 @@ list.prepend("test0")
 
 list.append("test3")
 
+list.append("test4")
+
 puts "Size of list: #{list.size}"
 
 puts list.at(3)
@@ -148,3 +150,4 @@ puts "Tail after pop: #{list.tail}"
 
 p list.contains?("test2")
 p list.find("test3")
+
