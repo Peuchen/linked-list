@@ -3,7 +3,7 @@ class Node
 
   @@count = 0
 
-  def initialize(value)
+  def initialize(value=nil)
     @@count += 1
 
     @value = value
@@ -121,6 +121,7 @@ class LinkedList
       return nil
     end
   end
+
 end
 
 list = LinkedList.new
