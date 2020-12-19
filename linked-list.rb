@@ -109,6 +109,18 @@ class LinkedList
     end
   end
 
+  def find(value)
+    if @tail.nil?
+      puts "The list does not contain any values"
+    else
+      n = 0
+      while n < (self.size - 1)
+        return n if self.at(n) == value
+        n += 1
+      end
+      return nil
+    end
+  end
 end
 
 list = LinkedList.new
@@ -134,3 +146,4 @@ puts "After pop: #{list}"
 puts "Tail after pop: #{list.tail}"
 
 p list.contains?("test2")
+p list.find("test3")
