@@ -130,6 +130,17 @@ class LinkedList
     previous_node.next_node = new_node
   end
 
+  def remove_at(index)
+    output = self.at(index)
+
+    previous_node = self.at(index-1)
+    new_next_node = self.at(index+1)
+
+    previous_node.next_node = new_next_node
+
+    output
+  end
+
 end
 
 list = LinkedList.new
@@ -160,5 +171,7 @@ p list.contains?("test2")
 p list.find("test3")
 
 list.insert_at("test2.5", 3)
-
 puts "After insert_at: #{list}"
+
+p list.remove_at(3)
+puts "After remove_at: #{list}"
