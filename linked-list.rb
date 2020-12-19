@@ -81,15 +81,18 @@ class LinkedList
       previous_node.next_node = current_node.next_node
       @tail = previous_node
     end
+    current_node.value
   end
 
   def to_s
     temp = @head
+    output = ""
     while temp != nil
-      print "( #{temp.value} ) -> "
+      output += "( #{temp.value} ) -> "
       temp = temp.next_node
     end
-    puts "nil"
+    output += "nil"
+    output
   end
 
 end
@@ -104,12 +107,14 @@ list.prepend("test0")
 
 list.append("test3")
 
-puts list.size
-puts "Head: #{list.head}"
-puts "Tail: #{list.tail}"
+puts "Size of list: #{list.size}"
+
 puts list.at(3)
 
-list.pop
-
-puts list
+puts "Head: #{list.head}"
 puts "Tail: #{list.tail}"
+puts "Before pop: #{list}"
+p list.pop
+puts "After pop: #{list}"
+
+puts "Tail after pop: #{list.tail}"
