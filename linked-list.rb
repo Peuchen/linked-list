@@ -95,6 +95,20 @@ class LinkedList
     output
   end
 
+  def contains?(value)
+    if @tail.nil?
+      puts "The list does not contain any values"
+    else
+      n = 0
+      output = false
+      while n < (self.size - 1)
+        output = true if self.at(n) == value
+        n += 1
+      end
+      output
+    end
+  end
+
 end
 
 list = LinkedList.new
@@ -118,3 +132,5 @@ p list.pop
 puts "After pop: #{list}"
 
 puts "Tail after pop: #{list.tail}"
+
+p list.contains?("test2")
