@@ -71,7 +71,6 @@ class LinkedList
     if @tail.nil?
       puts "There is nothing to delete"
     else
-
       current_node = @head.next_node
 
       until current_node == nil || current_node.value.equal?(self.at(size-1).value)
@@ -132,7 +131,6 @@ class LinkedList
 
   def remove_at(index)
     output = self.at(index)
-
     previous_node = self.at(index-1)
     new_next_node = self.at(index+1)
 
@@ -142,6 +140,8 @@ class LinkedList
   end
 
 end
+
+#Test situations
 
 list = LinkedList.new
 
